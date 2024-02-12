@@ -41,7 +41,7 @@ def weather(window):
         """\nSunrise: {sunrise} and Sunset: {sunset}"""
         res_info_en = f"\nSunrise: {sunrise} and Sunset: {sunset}\nMax Temperatures: {str(maxi)}°C,  Min Temperatures: {str(mini)}°C\nHumidity: {humid}%,  Wind Speed: {str(w_speed)}m/sec"
         
-        res_fr = "test"
+        res_fr = f"{city.capitalize()}: {condition}\n  {str(temp)}°C, Ressenti: {str(f_like)}°C "
         res_info_fr = "aa"
 
 
@@ -79,7 +79,7 @@ label2 = ttk.Label(window, font=Font, justify='center')
 label3 = ttk.Label(window, font=Font2, text="")
 drop = ttk.OptionMenu(window, clicked, "en","en", "fr", "es")
 
-labelimg.place(x= 100, y=125)  
+labelimg.place(x= 100, y=120)  
 label1.place(x = 225, y=135)  
 label2.place(x = 95, y = 225)
 drop.place(x=650, y= 500)
@@ -90,7 +90,7 @@ if clicked.get() == "en":
 
 if clicked.get() == "fr":
     label3.config(text="Langue: ")
-    label3.place(x=550, y=505)
+    
 
 
 
