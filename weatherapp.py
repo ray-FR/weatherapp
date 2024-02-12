@@ -41,10 +41,14 @@ def weather(window):
         """\nSunrise: {sunrise} and Sunset: {sunset}"""
         res_info_en = f"\nSunrise: {sunrise} and Sunset: {sunset}\nMax Temperatures: {str(maxi)}°C,  Min Temperatures: {str(mini)}°C\nHumidity: {humid}%,  Wind Speed: {str(w_speed)}m/sec"
         
+        res_fr = "test"
+        res_info_fr = "aa"
+
+
         lang = "res_"+clicked.get()
         lang_info = "res_info_"+clicked.get()
-        label1.config(text=globals()[lang])
-        label2.config(text=globals()[lang_info])
+        label1.config(text=locals()[lang])
+        label2.config(text=locals()[lang_info])
         txt.set("")
         
 
