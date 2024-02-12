@@ -42,7 +42,7 @@ def weather(window):
         res_info_en = f"\nSunrise: {sunrise} and Sunset: {sunset}\nMax Temperatures: {str(maxi)}°C,  Min Temperatures: {str(mini)}°C\nHumidity: {humid}%,  Wind Speed: {str(w_speed)}m/sec"
         
         res_fr = f"{city.capitalize()}: {condition}\n  {str(temp)}°C, Ressenti: {str(f_like)}°C "
-        res_info_fr = "aa"
+        res_info_fr = f"\nLever du soleil: {sunrise} et Coucher de soleil: {sunset}\nTempératures maximum: {str(maxi)}°C, {str(mini)}°C\nHumidité: {humid}%,  Vitesse du vent: {str(w_speed)}m/sec"
 
 
         lang = "res_"+clicked.get()
