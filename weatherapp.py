@@ -77,6 +77,11 @@ def update_label(*args):
     if clicked.get() == "fr":
         #label3.config(text="Langue: ")
         label3['text'] = "Langue: "
+        labelimg.place(x= 150, y=115)
+        label1.place(x = 275, y=135)  
+
+    if clicked.get() == "es":
+        label3['text'] = "Lengua: "
 
 
 window = ttk.Window(themename='darkly') 
@@ -90,7 +95,7 @@ window.resizable(False, False)
 api_k = input("Api key? ")
 txt = tk.StringVar()
 textfield = ttk.Entry(window, font=title, textvariable=txt)
-textfield.place(x=200, y=25 )  
+textfield.place(x=227, y=25 )  
 
 textfield.focus()
 textfield.bind('<Return>', weather)
@@ -105,9 +110,9 @@ label2 = ttk.Label(window, font=Font, justify='center')
 label3 = ttk.Label(window, font=Font2, text='Language: ')
 drop = ttk.OptionMenu(window, clicked, "en","en", "fr", "es")
 
-labelimg.place(x= 100, y=120)  
-label1.place(x = 225, y=135)  
-label2.place(x = 95, y = 225)
+labelimg.place(x= 175, y=115)  
+label1.place(x = 300, y=135)  
+label2.place(x = 150, y = 225)
 label3.place(x=550, y=505)
 drop.place(x=650, y= 500)
 
