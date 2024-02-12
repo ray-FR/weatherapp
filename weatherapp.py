@@ -98,11 +98,13 @@ drop = ttk.OptionMenu(window, clicked, "en","en", "fr", "es")
 labelimg.place(x= 100, y=120)  
 label1.place(x = 225, y=135)  
 label2.place(x = 95, y = 225)
-drop.place(x=650, y= 500)
 label3.place(x=550, y=505)
+drop.place(x=650, y= 500)
+
+
+
+
 
 clicked.trace_add("write", update_label)
-
-
 window.mainloop()
 
