@@ -5,6 +5,15 @@ import requests
 import time
 from PIL import ImageTk, Image
 
+
+
+
+
+
+
+
+
+
 def weather(window):
     city = txt.get()
     lang_str = clicked.get()
@@ -101,6 +110,12 @@ def update_label(*args):
         label2.place(x = 75, y = 250)
 
 
+
+
+
+
+
+
 window = ttk.Window(themename='darkly') 
 window.title("Weather App")
 window.geometry("750x550") 
@@ -137,6 +152,13 @@ drop.place(x=650, y= 500)
 
 
 
+
+
+
+
+
+
+
+
 clicked.trace_add("write", update_label)
 window.mainloop()
-
