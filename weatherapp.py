@@ -7,18 +7,23 @@ from PIL import ImageTk, Image
 
 def weather(window):
     city = txt.get()
+    lang_str = clicked.get()
+    print(clicked.get())
     
-    api = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_k}&lang={clicked.get()}"
+    api = f"https://api.openweathermap.org/data/2.5/weather?q={city}&lang={lang_str}&appid={api_k}"
     
     
     json_data = requests.get(api).json()
+    print(json_data)
 
     if str(json_data['cod']) == '404':
         labelimg.config(image='')
         label1.config(text=f"Error. {city} does not exist.")
         label2.config(text="")
+        
 
     else:
+        
         temp = int(json_data['main']['temp'] - 273.15) #NOTE: EN KELVIN, A CONVERTIR AVEC 273.15
         mini = int(json_data['main']['temp_min'] - 273.15)
         maxi = int(json_data['main']['temp_max'] - 273.15)
@@ -41,8 +46,8 @@ def weather(window):
         """\nSunrise: {sunrise} and Sunset: {sunset}"""
         res_info_en = f"\nSunrise: {sunrise} and Sunset: {sunset}\nMax Temperatures: {str(maxi)}°C,  Min Temperatures: {str(mini)}°C\nHumidity: {humid}%,  Wind Speed: {str(w_speed)}m/sec"
         
-        res_fr = f"{city.capitalize()}: {condition}\n  {str(temp)}°C, Ressenti: {str(f_like)}°C "
-        res_info_fr = f"\nLever du soleil: {sunrise} et Coucher de soleil: {sunset}\nTempératures maximum: {str(maxi)}°C, {str(mini)}°C\nHumidité: {humid}%,  Vitesse du vent: {str(w_speed)}m/sec"
+        #res_fr = f"{city.capitalize()}: {condition}\n  {str(temp)}°C, Ressenti: {str(f_like)}°C "
+        #res_info_fr = f"\nLever du soleil: {sunrise} et Coucher de soleil: {sunset}\nTempératures maximum: {str(maxi)}°C, {str(mini)}°C\nHumidité: {humid}%,  Vitesse du vent: {str(w_speed)}m/sec"
 
 
         lang = "res_"+clicked.get()
