@@ -82,8 +82,9 @@ def weather(window):
 def update_label(*args):
     if clicked.get() == "en":
         label3['text'] = "Language: "
-        labelimg.place(x= 125, y=110)  
+        labelimg.place(x= 130, y=110)  
         label1.place(x = 250, y=135)  
+        label2.place(x = 125, y = 265)
         
 
     if clicked.get() == "fr":
@@ -126,9 +127,9 @@ label2 = ttk.Label(window, font=Font, justify='center')
 label3 = ttk.Label(window, font=Font2, text='Language: ')
 drop = ttk.OptionMenu(window, clicked, "en","en","fr","es")
 
-labelimg.place(x= 125, y=110)  
+labelimg.place(x= 130, y=110)  
 label1.place(x = 250, y=135)  
-label2.place(x = 125, y = 275)
+label2.place(x = 125, y = 265)
 label3.place(x=530, y=505)
 drop.place(x=650, y= 500)
 
