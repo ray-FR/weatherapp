@@ -7,7 +7,7 @@ from PIL import ImageTk, Image
 
 def weather(window):
     city = txt.get()
-    api_k = input("Api key? ")
+    
     api = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_k}"
     
     json_data = requests.get(api).json()
@@ -53,7 +53,7 @@ Font2 = ("Helvetica", 12)
 title = ("Helvetica", 20, "bold")
 window.resizable(False, False)
 
-
+api_k = input("Api key? ")
 txt = tk.StringVar()
 textfield = ttk.Entry(window, font=title, textvariable=txt)
 textfield.place(x=200, y=25 )  
