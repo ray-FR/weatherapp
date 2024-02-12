@@ -19,7 +19,12 @@ def weather(window):
 
     if str(json_data['cod']) == '404':
         labelimg.config(image='')
-        label1.config(text=f"Error. {city} does not exist.")
+        if lang_str == "en":
+            label1.config(text=f"Error. {city} does not exist.")
+        elif lang_str == "fr":
+            label1.config(text=f"Erreur. {city} n'existe pas.")
+        elif lang_str == "es":
+            label1.config(text=f"Error. {city} no existe.")
         label2.config(text="")
         
 
@@ -43,12 +48,17 @@ def weather(window):
         labelimg.config(image=icon)
         labelimg.image = icon
 
+
+
         res_en = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Feels like {str(f_like)}°C "
-        """\nSunrise: {sunrise} and Sunset: {sunset}"""
         res_info_en = f"\nSunrise: {sunrise} and Sunset: {sunset}\nMax Temperatures: {str(maxi)}°C,  Min Temperatures: {str(mini)}°C\nHumidity: {humid}%,  Wind Speed: {str(w_speed)}m/sec"
         
-        res_fr = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Ressenti: {str(f_like)}°C "
-        res_info_fr = f"\nLever du soleil: {sunrise} et Coucher de soleil: {sunset}\nTempératures maximum: {str(maxi)}°C, Températures minimum: {str(mini)}°C\nHumidité: {humid}%,  Vitesse du vent: {str(w_speed)}m/sec"
+        res_fr = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, sensación térmica: {str(f_like)}°C "
+        res_info_fr = f"\nLever du soleil: {sunrise} et Coucher du soleil: {sunset}\nTempératures maximal: {str(maxi)}°C, Températures minimal: {str(mini)}°C\nHumidité: {humid}%,  Vitesse du vent: {str(w_speed)}m/sec"
+
+        res_es = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Ressenti: {str(f_like)}°C "
+        res_info_es = f"\nAmanecer: {sunrise} y Atardecer: {sunset}\nTemperatura máxima : {str(maxi)}°C, Temperatura mínimo: {str(mini)}°C\nHumedad: {humid}%,  Velocidad del viento: {str(w_speed)}m/sec"
+
 
 
         lang = "res_"+clicked.get()
