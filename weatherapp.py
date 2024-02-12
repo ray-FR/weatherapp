@@ -8,13 +8,13 @@ from PIL import ImageTk, Image
 def weather(window):
     city = txt.get()
     lang_str = clicked.get()
-    print(clicked.get())
+    
     
     api = f"https://api.openweathermap.org/data/2.5/weather?q={city}&lang={lang_str}&appid={api_k}"
     
     
     json_data = requests.get(api).json()
-    print(json_data)
+    
 
     if str(json_data['cod']) == '404':
         labelimg.config(image='')
@@ -90,12 +90,12 @@ label2.place(x = 95, y = 225)
 drop.place(x=650, y= 500)
 
 if clicked.get() == "en":
-    label3.config(text="Language: ")
+    label3['text'] = "Language: "
     label3.place(x=550, y=505)
 
 if clicked.get() == "fr":
-    label3.config(text="Langue: ")
-    
+    #label3.config(text="Langue: ")
+    label3['text'] = "Langue: "
 
 
 
