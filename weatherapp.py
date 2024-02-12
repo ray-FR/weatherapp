@@ -61,7 +61,7 @@ def weather(window):
 
 
         res_en = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Feels like {str(f_like)}°C "
-        res_info_en = f"\nSunrise: {sunrise} and Sunset: {sunset}\nMax Temperatures: {str(maxi)}°C,  Min Temperatures: {str(mini)}°C\nHumidity: {humid}%,  Wind Speed: {str(w_speed)}m/sec"
+        res_info_en = f"\nSunrise: {sunrise} and Sunset: {sunset}\n\nMax Temperatures: {str(maxi)}°C,  Min Temperatures: {str(mini)}°C\n\nHumidity: {humid}%,  Wind Speed: {str(w_speed)}m/sec"
         
         res_fr = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Ressenti: {str(f_like)}°C "
         res_info_fr = f"\nLever du soleil: {sunrise} et Coucher du soleil: {sunset}\n\nTempératures maximal: {str(maxi)}°C, Températures minimal: {str(mini)}°C\n\nHumidité: {humid}%,  Vitesse du vent: {str(w_speed)}m/sec"
@@ -82,8 +82,8 @@ def weather(window):
 def update_label(*args):
     if clicked.get() == "en":
         label3['text'] = "Language: "
-        labelimg.place(x= 175, y=105)  
-        label1.place(x = 300, y=135)  
+        labelimg.place(x= 125, y=110)  
+        label1.place(x = 250, y=135)  
         
 
     if clicked.get() == "fr":
@@ -95,6 +95,9 @@ def update_label(*args):
 
     if clicked.get() == "es":
         label3['text'] = "Lengua: "
+        labelimg.place(x= 105, y=110)  
+        label1.place(x = 225, y=135)
+        label2.place(x = 75, y = 250)
 
 
 window = ttk.Window(themename='darkly') 
@@ -121,11 +124,11 @@ labelimg = ttk.Label(window)
 label1 = ttk.Label(window, font=title, justify='center')
 label2 = ttk.Label(window, font=Font, justify='center')
 label3 = ttk.Label(window, font=Font2, text='Language: ')
-drop = ttk.OptionMenu(window, clicked, "en","en", "fr", "es")
+drop = ttk.OptionMenu(window, clicked, "en","en","fr","es")
 
-labelimg.place(x= 175, y=105)  
-label1.place(x = 300, y=135)  
-label2.place(x = 150, y = 225)
+labelimg.place(x= 125, y=110)  
+label1.place(x = 250, y=135)  
+label2.place(x = 125, y = 275)
 label3.place(x=530, y=505)
 drop.place(x=650, y= 500)
 
