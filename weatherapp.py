@@ -11,6 +11,7 @@ def weather(window):
     
     
     api = f"https://api.openweathermap.org/data/2.5/weather?q={city}&lang={lang_str}&appid={api_k}"
+    print(api)
     
     
     json_data = requests.get(api).json()
@@ -42,12 +43,12 @@ def weather(window):
         labelimg.config(image=icon)
         labelimg.image = icon
 
-        res_en = f"{city.capitalize()}: {condition}\n  {str(temp)}°C, Feels like {str(f_like)}°C "
+        res_en = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Feels like {str(f_like)}°C "
         """\nSunrise: {sunrise} and Sunset: {sunset}"""
         res_info_en = f"\nSunrise: {sunrise} and Sunset: {sunset}\nMax Temperatures: {str(maxi)}°C,  Min Temperatures: {str(mini)}°C\nHumidity: {humid}%,  Wind Speed: {str(w_speed)}m/sec"
         
-        #res_fr = f"{city.capitalize()}: {condition}\n  {str(temp)}°C, Ressenti: {str(f_like)}°C "
-        #res_info_fr = f"\nLever du soleil: {sunrise} et Coucher de soleil: {sunset}\nTempératures maximum: {str(maxi)}°C, {str(mini)}°C\nHumidité: {humid}%,  Vitesse du vent: {str(w_speed)}m/sec"
+        res_fr = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Ressenti: {str(f_like)}°C "
+        res_info_fr = f"\nLever du soleil: {sunrise} et Coucher de soleil: {sunset}\nTempératures maximum: {str(maxi)}°C, Températures minimum: {str(mini)}°C\nHumidité: {humid}%,  Vitesse du vent: {str(w_speed)}m/sec"
 
 
         lang = "res_"+clicked.get()
@@ -56,6 +57,16 @@ def weather(window):
         label2.config(text=locals()[lang_info])
         txt.set("")
         
+
+
+def update_label(*args):
+    if clicked.get() == "en":
+        label3['text'] = "Language: "
+        
+
+    if clicked.get() == "fr":
+        #label3.config(text="Langue: ")
+        label3['text'] = "Langue: "
 
 
 window = ttk.Window(themename='darkly') 
@@ -81,23 +92,16 @@ clicked.set("en")
 labelimg = ttk.Label(window)
 label1 = ttk.Label(window, font=title, justify='center')
 label2 = ttk.Label(window, font=Font, justify='center')
-label3 = ttk.Label(window, font=Font2, text="")
+label3 = ttk.Label(window, font=Font2, text='Language: ')
 drop = ttk.OptionMenu(window, clicked, "en","en", "fr", "es")
 
 labelimg.place(x= 100, y=120)  
 label1.place(x = 225, y=135)  
 label2.place(x = 95, y = 225)
 drop.place(x=650, y= 500)
+label3.place(x=550, y=505)
 
-if clicked.get() == "en":
-    label3['text'] = "Language: "
-    label3.place(x=550, y=505)
-
-if clicked.get() == "fr":
-    #label3.config(text="Langue: ")
-    label3['text'] = "Langue: "
-
-
+clicked.trace_add("write", update_label)
 
 
 window.mainloop()
