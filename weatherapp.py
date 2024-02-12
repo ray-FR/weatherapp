@@ -26,6 +26,16 @@ def weather(window):
         elif lang_str == "es":
             label1.config(text=f"Error. {city} no existe.")
         label2.config(text="")
+
+    elif str(json_data['cod']) == '401':
+        if lang_str == "en":
+            label1.config(text=f"Error. Invalid api key.")
+        elif lang_str == "fr":
+            label1.config(text=f"Erreur. Clé api invalide.")
+        elif lang_str == "es":
+            label1.config(text=f"Error. Api cle no existe.")
+        
+        
         
 
     else:
@@ -54,7 +64,7 @@ def weather(window):
         res_info_en = f"\nSunrise: {sunrise} and Sunset: {sunset}\nMax Temperatures: {str(maxi)}°C,  Min Temperatures: {str(mini)}°C\nHumidity: {humid}%,  Wind Speed: {str(w_speed)}m/sec"
         
         res_fr = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Ressenti: {str(f_like)}°C "
-        res_info_fr = f"\nLever du soleil: {sunrise} et Coucher du soleil: {sunset}\nTempératures maximal: {str(maxi)}°C, Températures minimal: {str(mini)}°C\nHumidité: {humid}%,  Vitesse du vent: {str(w_speed)}m/sec"
+        res_info_fr = f"\nLever du soleil: {sunrise} et Coucher du soleil: {sunset}\n\nTempératures maximal: {str(maxi)}°C, Températures minimal: {str(mini)}°C\n\nHumidité: {humid}%,  Vitesse du vent: {str(w_speed)}m/sec"
 
         res_es = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Sensación térmica: {str(f_like)}°C "
         res_info_es = f"\nAmanecer: {sunrise} y Atardecer: {sunset}\n\nTemperatura máxima : {str(maxi)}°C, Temperatura mínimo: {str(mini)}°C\n\nHumedad: {humid}%,  Velocidad del viento: {str(w_speed)}m/sec"
@@ -81,7 +91,7 @@ def update_label(*args):
         label3['text'] = "Langue: "
         labelimg.place(x= 135, y=100)
         label1.place(x = 260, y=120)  
-        label2.place(x = 75, y = 250)
+        label2.place(x = 60, y = 250)
 
     if clicked.get() == "es":
         label3['text'] = "Lengua: "
