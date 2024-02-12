@@ -53,11 +53,11 @@ def weather(window):
         res_en = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Feels like {str(f_like)}°C "
         res_info_en = f"\nSunrise: {sunrise} and Sunset: {sunset}\nMax Temperatures: {str(maxi)}°C,  Min Temperatures: {str(mini)}°C\nHumidity: {humid}%,  Wind Speed: {str(w_speed)}m/sec"
         
-        res_fr = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, sensación térmica: {str(f_like)}°C "
+        res_fr = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Ressenti: {str(f_like)}°C "
         res_info_fr = f"\nLever du soleil: {sunrise} et Coucher du soleil: {sunset}\nTempératures maximal: {str(maxi)}°C, Températures minimal: {str(mini)}°C\nHumidité: {humid}%,  Vitesse du vent: {str(w_speed)}m/sec"
 
-        res_es = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Ressenti: {str(f_like)}°C "
-        res_info_es = f"\nAmanecer: {sunrise} y Atardecer: {sunset}\nTemperatura máxima : {str(maxi)}°C, Temperatura mínimo: {str(mini)}°C\nHumedad: {humid}%,  Velocidad del viento: {str(w_speed)}m/sec"
+        res_es = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Sensación térmica: {str(f_like)}°C "
+        res_info_es = f"\nAmanecer: {sunrise} y Atardecer: {sunset}\n\nTemperatura máxima : {str(maxi)}°C, Temperatura mínimo: {str(mini)}°C\n\nHumedad: {humid}%,  Velocidad del viento: {str(w_speed)}m/sec"
 
 
 
@@ -72,13 +72,16 @@ def weather(window):
 def update_label(*args):
     if clicked.get() == "en":
         label3['text'] = "Language: "
+        labelimg.place(x= 175, y=105)  
+        label1.place(x = 300, y=135)  
         
 
     if clicked.get() == "fr":
         #label3.config(text="Langue: ")
         label3['text'] = "Langue: "
-        labelimg.place(x= 150, y=115)
-        label1.place(x = 275, y=135)  
+        labelimg.place(x= 135, y=100)
+        label1.place(x = 260, y=120)  
+        label2.place(x = 75, y = 250)
 
     if clicked.get() == "es":
         label3['text'] = "Lengua: "
@@ -87,15 +90,15 @@ def update_label(*args):
 window = ttk.Window(themename='darkly') 
 window.title("Weather App")
 window.geometry("750x550") 
-Font = ("Helvetica", 15, "bold")
-Font2 = ("Helvetica", 12)
-title = ("Helvetica", 20, "bold")
+title = ("Helvetica", 23, "bold")
+Font = ("Helvetica", 17, "bold")
+Font2 = ("Helvetica", 17)
 window.resizable(False, False)
 
 api_k = input("Api key? ")
 txt = tk.StringVar()
 textfield = ttk.Entry(window, font=title, textvariable=txt)
-textfield.place(x=227, y=25 )  
+textfield.place(x=220, y=25 )  
 
 textfield.focus()
 textfield.bind('<Return>', weather)
@@ -110,10 +113,10 @@ label2 = ttk.Label(window, font=Font, justify='center')
 label3 = ttk.Label(window, font=Font2, text='Language: ')
 drop = ttk.OptionMenu(window, clicked, "en","en", "fr", "es")
 
-labelimg.place(x= 175, y=115)  
+labelimg.place(x= 175, y=105)  
 label1.place(x = 300, y=135)  
 label2.place(x = 150, y = 225)
-label3.place(x=550, y=505)
+label3.place(x=530, y=505)
 drop.place(x=650, y= 500)
 
 
