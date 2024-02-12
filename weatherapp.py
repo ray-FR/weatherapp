@@ -37,11 +37,14 @@ def weather(window):
         labelimg.config(image=icon)
         labelimg.image = icon
 
-        res = f"{city.capitalize()}: {condition}\n  {str(temp)}°C, Feels like {str(f_like)}°C "
+        res_en = f"{city.capitalize()}: {condition}\n  {str(temp)}°C, Feels like {str(f_like)}°C "
         """\nSunrise: {sunrise} and Sunset: {sunset}"""
-        res_info = f"\nSunrise: {sunrise} and Sunset: {sunset}\nMax Temperatures: {str(maxi)}°C,  Min Temperatures: {str(mini)}°C\nHumidity: {humid}%,  Wind Speed: {str(w_speed)}m/sec"
-        label1.config(text=res)
-        label2.config(text=res_info)
+        res_info_en = f"\nSunrise: {sunrise} and Sunset: {sunset}\nMax Temperatures: {str(maxi)}°C,  Min Temperatures: {str(mini)}°C\nHumidity: {humid}%,  Wind Speed: {str(w_speed)}m/sec"
+        
+        lang = "res_"+clicked.get()
+        lang_info = "res_info_"+clicked.get()
+        label1.config(text=globals()[lang])
+        label2.config(text=globals()[lang_info])
         txt.set("")
         
 
@@ -69,7 +72,7 @@ clicked.set("en")
 labelimg = ttk.Label(window)
 label1 = ttk.Label(window, font=title, justify='center')
 label2 = ttk.Label(window, font=Font, justify='center')
-label3 = ttk.Label(window, font=Font2, text="Language: ")
+label3 = ttk.Label(window, font=Font2, text="")
 drop = ttk.OptionMenu(window, clicked, "en","en", "fr", "es")
 
 labelimg.place(x= 100, y=125)  
