@@ -8,7 +8,8 @@ from PIL import ImageTk, Image
 def weather(window):
     city = txt.get()
     
-    api = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_k}"
+    api = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_k}&lang={clicked.get()}"
+    
     
     json_data = requests.get(api).json()
 
@@ -63,6 +64,8 @@ textfield.bind('<Return>', weather)
 clicked = ttk.StringVar()
 clicked.set("en")
 
+
+
 labelimg = ttk.Label(window)
 label1 = ttk.Label(window, font=title, justify='center')
 label2 = ttk.Label(window, font=Font, justify='center')
@@ -72,8 +75,16 @@ drop = ttk.OptionMenu(window, clicked, "en","en", "fr", "es")
 labelimg.place(x= 100, y=125)  
 label1.place(x = 225, y=135)  
 label2.place(x = 95, y = 225)
-label3.place(x=550, y=505)
 drop.place(x=650, y= 500)
+
+if clicked.get() == "en":
+    label3.config(text="Language: ")
+    label3.place(x=550, y=505)
+
+if clicked.get() == "fr":
+    label3.config(text="Langue: ")
+    label3.place(x=550, y=505)
+
 
 
 
