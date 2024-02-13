@@ -91,7 +91,7 @@ def weather(window):
 def update_label(*args):
     if clicked.get() == "en":
         label3['text'] = "Language: "
-        labelimg.place(x= 130, y=110)  
+        labelimg.place(x= 120, y=110)  
         label1.place(x = 250, y=135)  
         label2.place(x = 125, y = 265)
         
@@ -111,18 +111,23 @@ def update_label(*args):
 
 def menu():
     global val_button
+    print(val_button)
     var1 = ttk.StringVar(value="0")
     var2 = ttk.StringVar(value="0")
-    if val_button == 0:
-        ch1 = ttk.Checkbutton(window, text="test", variable=var1,style='RoundToggle.Toolbutton')
-        ch2 = ttk.Checkbutton(window, text="test2", variable=var2, style='RoundToggle.Toolbutton')
+    if val_button == 0:     
+        ch1 = ttk.Checkbutton(window, text="test", variable=var1, bootstyle='round-toggle')
+        ch2 = ttk.Checkbutton(window, text="test2", variable=var2, , bootstyle='round-toggle')
         ch1.place(x=150, y=250)
         ch2.place(x=300, y=450)
         val_button = 1
-    if val_button == 1:
-        #for i in range(0, 1):
-        ch1.place_forget()
-            #locals()["ch"+str(i)].place_forget()
+    elif val_button == 1:
+
+        """doesnt work, it just refuses to use the method that is associated with the checkbutton objects for some reason?? forgive me
+        for the horrid code above
+        for i in range(1, 2):
+            a = "ch"+str(i)
+            locals()[a].place_forget()
+        """
         val_button = 0
         
             
@@ -141,7 +146,8 @@ window.resizable(False, False)
 val_button = 0
 style = ttk.Style(theme='darkly')
 
-style.configure('TCheckbutton' ,font=('Helvetica', 17))
+
+#style.configure('TCheckbutton' ,font=('Helvetica', 17), bootstyle="round-toggle" )
 
 
 api_k = input("Api key? ")
@@ -161,12 +167,12 @@ label1 = ttk.Label(window, font=title, justify='center')
 label2 = ttk.Label(window, font=Font, justify='center')
 label3 = ttk.Label(window, font=Font2, text='Language: ')
 drop = ttk.OptionMenu(window, clicked, "en","en","fr","es")
-button = ttk.Button(window, text="Show menu",command=menu  )
+button = ttk.Button(window, text="Show menu", command=menu)
 
 
 
 
-labelimg.place(x= 130, y=110)  
+labelimg.place(x= 120, y=110)  
 label1.place(x = 250, y=135)  
 label2.place(x = 125, y = 265)
 label3.place(x=530, y=505)
