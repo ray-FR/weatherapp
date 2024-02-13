@@ -112,16 +112,19 @@ def update_label(*args):
 def menu(): #probablement la pire fonction que j'ai jamais écrit
     global val_button, ch1, ch2, ch3, ch4, ch5, ch6
     
-    var1 = ttk.StringVar(value="0")
-    var2 = ttk.StringVar(value="0")
+
     if val_button == 0:     
-        ch1 = ttk.Checkbutton(window, text="test", variable=var1, bootstyle='round-toggle')
+        ch1 = ttk.Checkbutton(window, text="test", variable=var1,bootstyle='round-toggle')
         ch2 = ttk.Checkbutton(window, text="test2", variable=var2, bootstyle='round-toggle')
+        ch3 = ttk.Checkbutton(window, text="test2", variable=var3, bootstyle='round-toggle')
+        ch4 = ttk.Checkbutton(window, text="test2", variable=var4, bootstyle='round-toggle')
+        ch5 = ttk.Checkbutton(window, text="test2", variable=var5, bootstyle='round-toggle')
+        ch6 = ttk.Checkbutton(window, text="test2", variable=var6, bootstyle='round-toggle')
         ch1.place(x=150, y=250)
         ch2.place(x=300, y=450)
         val_button = 1
     elif val_button == 1:
-        
+        print(var1.get())
         ch1.place_forget()
         ch2.place_forget()
         
@@ -152,7 +155,19 @@ val_button = 0
 style = ttk.Style(theme='darkly')
 
 
-style.configure('TCheckbutton' ,font=('Helvetica', 17), )
+var1 = ttk.StringVar(value="0")
+var2 = ttk.StringVar(value="0")
+var3 = ttk.StringVar(value="0")
+var4 = ttk.StringVar(value="0")
+var5 = ttk.StringVar(value="0")
+var6 = ttk.StringVar(value="0")
+
+
+
+
+
+
+#style.configure('TCheckbutton' ,font=('Helvetica', 17) ) (does not work)
 
 
 api_k = input("Api key? ")
