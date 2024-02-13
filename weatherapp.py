@@ -109,9 +109,12 @@ def update_label(*args):
         label1.place(x = 225, y=135)
         label2.place(x = 75, y = 250)
 
-
-
-
+def menu():
+    if val_button == 0:
+        ch1 = ttk.Checkbutton(window, text="test", onvalue=1, offvalue=0)
+        ch2 = ttk.Checkbutton(window, text="test2", onvalue=1, offvalue=0)
+        ch1.place(x=150, y=250)
+        ch2.place(x=300, y=450)
 
 
 
@@ -123,6 +126,8 @@ title = ("Helvetica", 23, "bold")
 Font = ("Helvetica", 17, "bold")
 Font2 = ("Helvetica", 17)
 window.resizable(False, False)
+val_button = 0
+
 
 api_k = input("Api key? ")
 txt = tk.StringVar()
@@ -136,11 +141,14 @@ clicked.set("en")
 
 
 
-labelimg = ttk.Label(window)
+labelimg = ttk.Label(window, )
 label1 = ttk.Label(window, font=title, justify='center')
 label2 = ttk.Label(window, font=Font, justify='center')
 label3 = ttk.Label(window, font=Font2, text='Language: ')
 drop = ttk.OptionMenu(window, clicked, "en","en","fr","es")
+button = ttk.Button(window, text="Show menu", font=Font2, command=menu )
+
+
 
 labelimg.place(x= 130, y=110)  
 label1.place(x = 250, y=135)  
