@@ -109,24 +109,29 @@ def update_label(*args):
         label1.place(x = 225, y=135)
         label2.place(x = 75, y = 250)
 
-def menu():
-    global val_button
-    print(val_button)
+def menu(): #probablement la pire fonction que j'ai jamais écrit
+    global val_button, ch1, ch2, ch3, ch4, ch5, ch6
+    
     var1 = ttk.StringVar(value="0")
     var2 = ttk.StringVar(value="0")
     if val_button == 0:     
         ch1 = ttk.Checkbutton(window, text="test", variable=var1, bootstyle='round-toggle')
-        ch2 = ttk.Checkbutton(window, text="test2", variable=var2, , bootstyle='round-toggle')
+        ch2 = ttk.Checkbutton(window, text="test2", variable=var2, bootstyle='round-toggle')
         ch1.place(x=150, y=250)
         ch2.place(x=300, y=450)
         val_button = 1
     elif val_button == 1:
-
+        
+        ch1.place_forget()
+        ch2.place_forget()
+        
+        
+        
         """doesnt work, it just refuses to use the method that is associated with the checkbutton objects for some reason?? forgive me
         for the horrid code above
         for i in range(1, 2):
             a = "ch"+str(i)
-            locals()[a].place_forget()
+            globals()[a].place_forget()
         """
         val_button = 0
         
@@ -147,7 +152,7 @@ val_button = 0
 style = ttk.Style(theme='darkly')
 
 
-#style.configure('TCheckbutton' ,font=('Helvetica', 17), bootstyle="round-toggle" )
+style.configure('TCheckbutton' ,font=('Helvetica', 17), )
 
 
 api_k = input("Api key? ")
