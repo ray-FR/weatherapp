@@ -19,7 +19,7 @@ def weather(window):
     #lang_str = clicked.get()
     
     
-    api = f"https://api.openweathermap.org/data/2.5/weather?q={city}&lang={lang_str}&appid={api_k}"
+    api = f"https://api.openweathermap.org/data/2.5/weather?q={city}&lang={clicked.get()}&appid={api_k}"
     print(api)
     
     
@@ -117,13 +117,16 @@ def menu(): #probablement la pire fonction que j'ai jamais écrit
         textfield.config(state='disabled')
         labelimg.config(image='')
         if clicked.get() == "en":
-            label1.config(text=f"Textfield disabled. press the show menu button again to enable it.")
+            txt.set("Textfield disabled.")
         elif clicked.get() == "fr":
-            label1.config(text=f"Textfield désactivé. appuyez à nouveau sur le bouton pour l'activer.")
+            txt.set("Textfield désactivé")
         elif clicked.get() == "es":
-            label1.config(text=f"Textfield deshabilitado. presione el botón nuevamente para habilitarlo.")
+            txt.set("Textfield deshabilitado.")
+        label1.config(text="")
         label2.config(text="")
-        txt.set("")
+        
+        
+        
         ch1 = ttk.Checkbutton(window, text="test",  variable=var1, bootstyle='round-toggle')
         ch2 = ttk.Checkbutton(window, text="test2", variable=var2, bootstyle='round-toggle')
         ch3 = ttk.Checkbutton(window, text="test3", variable=var3, bootstyle='round-toggle')
@@ -134,12 +137,13 @@ def menu(): #probablement la pire fonction que j'ai jamais écrit
         ch1.place(x=100, y=175)
         ch2.place(x=100, y=200)
         ch3.place(x=100, y=225)
-        ch4.place(x=550, y=175)
-        ch5.place(x=550, y=200)
-        ch6.place(x=550, y=225)
+        ch4.place(x=450, y=175)
+        ch5.place(x=450, y=200)
+        ch6.place(x=450, y=225)
         val_button = 1
 
     elif val_button == 1:
+        txt.set("")
         textfield.config(state='enabled')
         ch1.place_forget()
         ch2.place_forget()
