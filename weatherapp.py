@@ -16,7 +16,7 @@ from PIL import ImageTk, Image
 
 def weather(window):
     city = txt.get()
-    lang_str = clicked.get()
+    #lang_str = clicked.get()
     
     
     api = f"https://api.openweathermap.org/data/2.5/weather?q={city}&lang={lang_str}&appid={api_k}"
@@ -28,20 +28,20 @@ def weather(window):
 
     if str(json_data['cod']) == '404':
         labelimg.config(image='')
-        if lang_str == "en":
+        if clicked.get() == "en":
             label1.config(text=f"Error. {city} does not exist.")
-        elif lang_str == "fr":
+        elif clicked.get() == "fr":
             label1.config(text=f"Erreur. {city} n'existe pas.")
-        elif lang_str == "es":
+        elif clicked.get() == "es":
             label1.config(text=f"Error. {city} no existe.")
         label2.config(text="")
 
     elif str(json_data['cod']) == '401':
-        if lang_str == "en":
+        if clicked.get() == "en":
             label1.config(text=f"Error. Invalid api key.")
-        elif lang_str == "fr":
+        elif clicked.get() == "fr":
             label1.config(text=f"Erreur. Clé api invalide.")
-        elif lang_str == "es":
+        elif clicked.get() == "es":
             label1.config(text=f"Error. Api cle no existe.")
         
         
@@ -114,19 +114,39 @@ def menu(): #probablement la pire fonction que j'ai jamais écrit
     
 
     if val_button == 0:     
-        ch1 = ttk.Checkbutton(window, text="test", variable=var1,bootstyle='round-toggle')
+        textfield.config(state='disabled')
+        labelimg.config(image='')
+        if clicked.get() == "en":
+            label1.config(text=f"Textfield disabled. press the show menu button again to enable it.")
+        elif clicked.get() == "fr":
+            label1.config(text=f"Textfield désactivé. appuyez à nouveau sur le bouton pour l'activer.")
+        elif clicked.get() == "es":
+            label1.config(text=f"Textfield deshabilitado. presione el botón nuevamente para habilitarlo.")
+        label2.config(text="")
+        txt.set("")
+        ch1 = ttk.Checkbutton(window, text="test",  variable=var1, bootstyle='round-toggle')
         ch2 = ttk.Checkbutton(window, text="test2", variable=var2, bootstyle='round-toggle')
-        ch3 = ttk.Checkbutton(window, text="test2", variable=var3, bootstyle='round-toggle')
-        ch4 = ttk.Checkbutton(window, text="test2", variable=var4, bootstyle='round-toggle')
-        ch5 = ttk.Checkbutton(window, text="test2", variable=var5, bootstyle='round-toggle')
-        ch6 = ttk.Checkbutton(window, text="test2", variable=var6, bootstyle='round-toggle')
-        ch1.place(x=150, y=250)
-        ch2.place(x=300, y=450)
+        ch3 = ttk.Checkbutton(window, text="test3", variable=var3, bootstyle='round-toggle')
+        ch4 = ttk.Checkbutton(window, text="test4", variable=var4, bootstyle='round-toggle')
+        ch5 = ttk.Checkbutton(window, text="test5", variable=var5, bootstyle='round-toggle')
+        ch6 = ttk.Checkbutton(window, text="test6", variable=var6, bootstyle='round-toggle')
+
+        ch1.place(x=100, y=175)
+        ch2.place(x=100, y=200)
+        ch3.place(x=100, y=225)
+        ch4.place(x=550, y=175)
+        ch5.place(x=550, y=200)
+        ch6.place(x=550, y=225)
         val_button = 1
+
     elif val_button == 1:
-        print(var1.get())
+        textfield.config(state='enabled')
         ch1.place_forget()
         ch2.place_forget()
+        ch3.place_forget()
+        ch4.place_forget()
+        ch5.place_forget()
+        ch6.place_forget()
         
         
         
@@ -167,7 +187,7 @@ var6 = ttk.StringVar(value="0")
 
 
 
-#style.configure('TCheckbutton' ,font=('Helvetica', 17) ) (does not work)
+#style.configure('TCheckbutton' ,font=('Helvetica', 17) ) (doesnt work)
 
 
 api_k = input("Api key? ")
@@ -175,7 +195,9 @@ txt = tk.StringVar()
 textfield = ttk.Entry(window, font=title, textvariable=txt)
 textfield.place(x=220, y=25 )  
 
-textfield.focus()
+
+
+#textfield.focus()
 textfield.bind('<Return>', weather)
 clicked = ttk.StringVar()
 clicked.set("en")
