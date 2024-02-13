@@ -110,11 +110,14 @@ def update_label(*args):
         label2.place(x = 75, y = 250)
 
 def menu():
+    var1 = ttk.StringVar(value="0")
+    var2 = ttk.StringVar(value="0")
     if val_button == 0:
-        ch1 = ttk.Checkbutton(window, text="test", onvalue=1, offvalue=0)
-        ch2 = ttk.Checkbutton(window, text="test2", onvalue=1, offvalue=0)
+        ch1 = ttk.Checkbutton(window, text="test", variable=var1,style='RoundToggle.Toolbutton')
+        ch2 = ttk.Checkbutton(window, text="test2", variable=var2, style='RoundToggle.Toolbutton')
         ch1.place(x=150, y=250)
         ch2.place(x=300, y=450)
+        
 
 
 
@@ -127,6 +130,7 @@ Font = ("Helvetica", 17, "bold")
 Font2 = ("Helvetica", 17)
 window.resizable(False, False)
 val_button = 0
+ttk.Style.configure('TCheckbutton', font=Font2)
 
 
 api_k = input("Api key? ")
@@ -146,7 +150,8 @@ label1 = ttk.Label(window, font=title, justify='center')
 label2 = ttk.Label(window, font=Font, justify='center')
 label3 = ttk.Label(window, font=Font2, text='Language: ')
 drop = ttk.OptionMenu(window, clicked, "en","en","fr","es")
-button = ttk.Button(window, text="Show menu", font=Font2, command=menu )
+button = ttk.Button(window, text="Show menu",command=menu  )
+
 
 
 
@@ -155,6 +160,9 @@ label1.place(x = 250, y=135)
 label2.place(x = 125, y = 265)
 label3.place(x=530, y=505)
 drop.place(x=650, y= 500)
+button.place(x=150, y=500)
+
+
 
 
 
