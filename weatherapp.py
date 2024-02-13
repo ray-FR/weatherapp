@@ -110,6 +110,7 @@ def update_label(*args):
         label2.place(x = 75, y = 250)
 
 def menu():
+    global val_button
     var1 = ttk.StringVar(value="0")
     var2 = ttk.StringVar(value="0")
     if val_button == 0:
@@ -119,9 +120,11 @@ def menu():
         ch2.place(x=300, y=450)
         val_button = 1
     if val_button == 1:
-        for i in range(2):
-            locals()["var"+str(i)].place_forget()
+        #for i in range(0, 1):
+        ch1.place_forget()
+            #locals()["ch"+str(i)].place_forget()
         val_button = 0
+        
             
         
 
