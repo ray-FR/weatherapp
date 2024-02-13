@@ -117,6 +117,12 @@ def menu():
         ch2 = ttk.Checkbutton(window, text="test2", variable=var2, style='RoundToggle.Toolbutton')
         ch1.place(x=150, y=250)
         ch2.place(x=300, y=450)
+        val_button = 1
+    if val_button == 1:
+        for i in range(2):
+            locals()["var"+str(i)].place_forget()
+        val_button = 0
+            
         
 
 
@@ -130,7 +136,9 @@ Font = ("Helvetica", 17, "bold")
 Font2 = ("Helvetica", 17)
 window.resizable(False, False)
 val_button = 0
-ttk.Style.configure('TCheckbutton', font=Font2)
+style = ttk.Style(theme='darkly')
+
+style.configure('TCheckbutton' ,font=('Helvetica', 17))
 
 
 api_k = input("Api key? ")
