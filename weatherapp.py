@@ -15,9 +15,12 @@ from PIL import ImageTk, Image
 
 
 def weather(window):
-    global part1, part1_en, part1_fr, part1_es, part2, part2_en, part2_fr, part2_es
+    global  x_var_en, x_var_fr, x_var_es, part1, part1_en, part1_fr, part1_es, part2, part2_en, part2_fr, part2_es, part3, part3_en, part3_fr, part3_es
     city = txt.get()
     #lang_str = clicked.get()
+""" x_var_en = 40
+    x_var_fr = 60
+    x_var_es = 75"""
     
     
     api = f"https://api.openweathermap.org/data/2.5/weather?q={city}&lang={clicked.get()}&appid={api_k}"
@@ -68,8 +71,10 @@ def weather(window):
         labelimg.config(image=icon)
         labelimg.image = icon
 
+        x_var = "x_var_"+clicked.get()
         part1 = "part1_"+clicked.get()
         part2 = "part2_"+clicked.get()
+        part3 = "part3_"+clicked.get()
 
 
 
@@ -90,6 +95,7 @@ def weather(window):
             part1_fr = f"Lever du soleil: {sunrise} et Coucher du soleil: {sunset}"
             part1_es = f"Amanecer: {sunrise} y Atardecer: {sunset}"
 
+
         if var3.get() == "1" and var4.get() == "1":
             part2_en = f""
             part2_fr = f""
@@ -102,20 +108,40 @@ def weather(window):
             part2_en = f"Maximum Temperature: {str(maxi)}°C"
             part2_fr = f"Température maximal: {str(maxi)}°C"
             part2_es = f"Temperatura máxima: {str(maxi)}°C"
+        elif var3.get() == "1" or var4.get() == "1":
+            x_var_en = 170
+            x_var_fr = 70
+            x_var_es = 105
+            label2.place(x = globals()[x_var], y = 265)
         elif var3.get() == "0" and var4.get() == "0":
             part2_en = f"Maximum Temperature: {str(maxi)}°C,  Minimum Temperature: {str(mini)}°C"
             part2_fr = f"Température maximal: {str(maxi)}°C, Température minimal: {str(mini)}°C"
             part2_es = f"Temperatura máxima: {str(maxi)}°C, Temperatura mínimo: {str(mini)}°C"
+        
+        
+        elif var5.get() == "1" and var6.get() == "1":
+            part3_en = f""
+            part3_fr = f""
+            part3_es = f""
+        elif var5.get() == "1":
+            part3_en = f"Wind Speed: {str(w_speed)}m/sec"
+            part3_fr = f"Vitesse du vent: {str(w_speed)}m/sec"
+            part3_es = f"Velocidad del viento: {str(w_speed)}m/sec"
+            
+        elif var6.get() == "1":
+            part3_en = f"Humidity: {humid}%"
+            part3_fr = f"Humidité: {humid}%"
+            part3_es = f"Humedad: {humid}%"
 
-
+        
         res_en = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Feels like {str(f_like)}°C "
-        res_info_en = f"\n{globals()[part1_en]}\n\n{globals()[part2_en]}\n\nHumidity: {humid}%,  Wind Speed: {str(w_speed)}m/sec"
+        res_info_en = f"\n{globals()[part1]}\n\n{globals()[part2]}\n\nHumidity: {humid}%,  Wind Speed: {str(w_speed)}m/sec"
         
         res_fr = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Ressenti: {str(f_like)}°C "
-        res_info_fr = f"\n{globals()[part1_fr]}\n\n{globals()[part2_fr]}\n\nHumidité: {humid}%,  Vitesse du vent: {str(w_speed)}m/sec"
+        res_info_fr = f"\n{globals()[part1]}\n\n{globals()[part2]}\n\nHumidité: {humid}%,  Vitesse du vent: {str(w_speed)}m/sec"
 
         res_es = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Sensación térmica: {str(f_like)}°C "
-        res_info_es = f"\n{globals()[part1_es]}\n\n{globals()[part2_es]}\n\nHumedad: {humid}%,  Velocidad del viento: {str(w_speed)}m/sec"
+        res_info_es = f"\n{globals()[part1]}\n\n{globals()[part2]}\n\nHumedad: {humid}%,  Velocidad del viento: {str(w_speed)}m/sec"
 
 
 
@@ -146,13 +172,13 @@ def update_label(*args):
         label3['text'] = "Langue: "
         labelimg.place(x= 135, y=100)
         label1.place(x = 260, y=120)  
-        label2.place(x = 60, y = 250)
+        label2.place(x = 60, y = 265)
 
     if clicked.get() == "es":
         label3['text'] = "Lengua: "
         labelimg.place(x= 105, y=110)  
         label1.place(x = 225, y=135)
-        label2.place(x = 75, y = 250)
+        label2.place(x = 75, y = 265)
 
 
 
