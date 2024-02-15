@@ -118,15 +118,19 @@ def weather(window):
                 label2.place(x=175, y=265)
             elif clicked.get() == "fr":
                 label2.place(x=75, y=265)
-            elif clicked.get() == "es":     #problemo
+            elif clicked.get() == "es":     
                 label2.place(x=110, y=265)
         
-            
-
         elif var3.get() == "0" and var4.get() == "0":
             part2_en = f"Maximum Temperature: {str(maxi)}°C,  Minimum Temperature: {str(mini)}°C"
             part2_fr = f"Température maximal: {str(maxi)}°C, Température minimal: {str(mini)}°C"
             part2_es = f"Temperatura máxima: {str(maxi)}°C, Temperatura mínimo: {str(mini)}°C"
+            if clicked.get() == "en": #i know this is dumb, but it wouldnt work otherwise
+                label2.place(x=40, y=265)
+            elif clicked.get() == "fr":
+                label2.place(x=60, y=265)
+            elif clicked.get() == "es":
+                label2.place(x=75, y=265)
         
         
         if var5.get() == "1" and var6.get() == "1":
