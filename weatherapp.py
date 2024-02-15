@@ -16,14 +16,11 @@ from PIL import ImageTk, Image
 
 def weather(window):
     global  part3, part3_en, part3_fr, part3_es, x_var_en, x_var_fr, x_var_es, part1, part1_en, part1_fr, part1_es, part2, part2_en, part2_fr, part2_es
+    #yes, this is dumb, but it works, so i dont care
     city = txt.get()
     
 
-    """ 
-    x_var_en = 40
-    x_var_fr = 60
-    x_var_es = 75
-    """
+   
     
     
     api = f"https://api.openweathermap.org/data/2.5/weather?q={city}&lang={clicked.get()}&appid={api_k}"
@@ -33,7 +30,7 @@ def weather(window):
     json_data = requests.get(api).json()
     
 
-    if str(json_data['cod']) == '404':
+    if str(json_data['cod']) == '404': #the error message will not be centered
         labelimg.config(image='')
         if clicked.get() == "en":
             label1.config(text=f"Error. {city} does not exist.")
@@ -107,15 +104,25 @@ def weather(window):
             part2_en = f"Minimum Temperature: {str(mini)}°C"
             part2_fr = f"Température minimal: {str(mini)}°C"
             part2_es = f"Temperatura mínimo: {str(mini)}°C"
+            if clicked.get() == "en":
+                label2.place(x=175, y=265)
+            elif clicked.get() == "fr":
+                label2.place(x=75, y=265)
+            elif clicked.get() == "es":
+                label2.place(x=110, y=265)
         elif var4.get() == "1":
             part2_en = f"Maximum Temperature: {str(maxi)}°C"
             part2_fr = f"Température maximal: {str(maxi)}°C"
             part2_es = f"Temperatura máxima: {str(maxi)}°C"
-        elif var3.get() == "1" or var4.get() == "1":
-            x_var_en = 170
-            x_var_fr = 70
-            x_var_es = 145
-            label2.place(x = globals()[x_var], y = 265)
+            if clicked.get() == "en":
+                label2.place(x=175, y=265)
+            elif clicked.get() == "fr":
+                label2.place(x=75, y=265)
+            elif clicked.get() == "es":     #problemo
+                label2.place(x=110, y=265)
+        
+            
+
         elif var3.get() == "0" and var4.get() == "0":
             part2_en = f"Maximum Temperature: {str(maxi)}°C,  Minimum Temperature: {str(mini)}°C"
             part2_fr = f"Température maximal: {str(maxi)}°C, Température minimal: {str(mini)}°C"
@@ -140,7 +147,7 @@ def weather(window):
             part3_fr = f"Humidité: {humid}%, Vitesse du vent: {str(w_speed)}m/sec"
             part3_es = f"Humedad: {humid}%, Velocidad del viento: {str(w_speed)}m/sec"
 
-        
+        #theres probably a better way to do this, but too bad
         res_en = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Feels like {str(f_like)}°C "
         res_info_en = f"\n{globals()[part1]}\n\n{globals()[part2]}\n\n{globals()[part3]}"
         
@@ -195,7 +202,7 @@ def update_label(*args):
 
 
 
-def menu(): #probablement la pire fonction que j'ai jamais écrit
+def menu():
     global val_button, ch1, ch2, ch3, ch4, ch5, ch6
     
 
@@ -287,11 +294,11 @@ window.geometry("750x550")
 title = ("Helvetica", 23, "bold")
 Font = ("Helvetica", 17, "bold")
 Font2 = ("Helvetica", 17)
-window.resizable(False, False)
+window.resizable(False, False) #i have no idea how to change the placements of the widgets automatically, so i just disabled it
 val_button = 0
 style = ttk.Style(theme='darkly')
 
-
+#wouldn't work if these were in the menu  function
 var1 = ttk.StringVar(value="0")
 var2 = ttk.StringVar(value="0")
 var3 = ttk.StringVar(value="0")
@@ -315,7 +322,7 @@ textfield.place(x=210, y=25 )
 
 
 #textfield.focus()
-textfield.bind('<Return>', weather)
+
 clicked = ttk.StringVar()
 clicked.set("en")
 
@@ -325,11 +332,8 @@ labelimg = ttk.Label(window, )
 label1 = ttk.Label(window, font=title, justify='center')
 label2 = ttk.Label(window, font=Font, justify='center')
 label3 = ttk.Label(window, font=Font2, text='Language: ')
-drop = ttk.OptionMenu(window, clicked, "en","en","fr","es")
+drop = ttk.OptionMenu(window, clicked, "en","en","fr","es") #yes en was put twice or else it wouldnt work. too bad!
 button = ttk.Button(window, text="Filter", command=menu)
-
-
-
 
 labelimg.place(x= 120, y=110)  
 label1.place(x = 250, y=135)  
@@ -339,7 +343,7 @@ drop.place(x=650, y= 500)
 button.place(x=25, y=500)
 
 
-
+textfield.bind('<Return>', weather)
 
 
 
