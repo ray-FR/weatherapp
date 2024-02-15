@@ -127,12 +127,34 @@ def menu(): #probablement la pire fonction que j'ai jamais écrit
         
         
         
-        ch1 = ttk.Checkbutton(window, text="test",  variable=var1, bootstyle='round-toggle')
-        ch2 = ttk.Checkbutton(window, text="test2", variable=var2, bootstyle='round-toggle')
-        ch3 = ttk.Checkbutton(window, text="test3", variable=var3, bootstyle='round-toggle')
-        ch4 = ttk.Checkbutton(window, text="test4", variable=var4, bootstyle='round-toggle')
-        ch5 = ttk.Checkbutton(window, text="test5", variable=var5, bootstyle='round-toggle')
-        ch6 = ttk.Checkbutton(window, text="test6", variable=var6, bootstyle='round-toggle')
+        ch1 = ttk.Checkbutton(window, variable=var1, bootstyle='round-toggle')
+        ch2 = ttk.Checkbutton(window, variable=var2, bootstyle='round-toggle')
+        ch3 = ttk.Checkbutton(window, variable=var3, bootstyle='round-toggle')
+        ch4 = ttk.Checkbutton(window, variable=var4, bootstyle='round-toggle')
+        ch5 = ttk.Checkbutton(window, variable=var5, bootstyle='round-toggle')
+        ch6 = ttk.Checkbutton(window, variable=var6, bootstyle='round-toggle')
+
+        if clicked.get() == "en":
+            ch1['text'] = "Do not include sunrise"
+            ch2['text'] = "Do not include sunset"
+            ch3['text'] = "Do not include max temperatures"
+            ch4['text'] = "Do not include min temperatures"
+            ch5['text'] = "Do not include humidity"
+            ch6['text'] = "Do not include wind speed"
+        elif clicked.get() == "fr":
+            ch1['text'] = "Ne pas inclure le lever du soleil"
+            ch2['text'] = "Ne pas inclure le coucher du soleil"
+            ch3['text'] = "Ne pas inclure la température maximal"
+            ch4['text'] = "Ne pas inclure la température minimal"
+            ch5['text'] = "Ne pas inclure l'humidité"
+            ch6['text'] = "Ne pas inclure la vitesse du vent"
+        elif clicked.get() == "es":
+            ch1['text'] = "No incluir el amanecer"
+            ch2['text'] = "No incluir la puesta del sol"
+            ch3['text'] = "No incluir la temperatura máxima"
+            ch4['text'] = "No incluir la temperatura mínima"
+            ch5['text'] = "No incluir la humedad"
+            ch6['text'] = "No incluir la velocidad del viento"
 
         ch1.place(x=100, y=175)
         ch2.place(x=100, y=200)
