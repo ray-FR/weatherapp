@@ -15,6 +15,7 @@ from PIL import ImageTk, Image
 
 
 def weather(window):
+    global part1, part1_en, part1_fr, part1_es, part2, part2_en, part2_fr, part2_es
     city = txt.get()
     #lang_str = clicked.get()
     
@@ -67,13 +68,51 @@ def weather(window):
         labelimg.config(image=icon)
         labelimg.image = icon
 
+        part1 = "part1_"+clicked.get()
+        part2 = "part2_"+clicked.get()
+
+
+
+        if var1.get() == "1" and var2.get() == "1":
+            part1_en = f""
+            part1_fr = f""
+            part1_es = f""
+        elif var1.get() == "1":
+            part1_en = f"Sunset: {sunrise}"
+            part1_fr = f"Coucher du soleil: {sunset}"
+            part1_es = f"Atardecer: {sunset}"
+        elif var2.get() == "1":
+            part1_en = f"Sunrise: {sunset}"
+            part1_fr = f"Lever du soleil: {sunrise}"
+            part1_es = f"Amanecer: {sunrise}"
+        elif var1.get() == "0" and var2.get() == "0":
+            part1_en = f"Sunrise: {sunrise} and Sunset: {sunset}"
+            part1_fr = f"Lever du soleil: {sunrise} et Coucher du soleil: {sunset}"
+            part1_es = f"Amanecer: {sunrise} y Atardecer: {sunset}"
+
+        if var3.get() == "1" and var4.get() == "1":
+            part2_en = f""
+            part2_fr = f""
+            part2_es = f""
+        elif var3.get() == "1":
+            part2_en = f"Minimum Temperature: {str(mini)}°C"
+            part2_fr = f"Température minimal: {str(mini)}°C"
+            part2_es = f"Temperatura mínimo: {str(mini)}°C"
+        elif var4.get() == "1":
+            part2_en = f"Maximum Temperature: {str(maxi)}°C"
+            part2_fr = f"Température maximal: {str(maxi)}°C"
+            part2_es = f"Temperatura máxima: {str(maxi)}°C"
+        elif var3.get() == "0" and var4.get() == "0":
+            part2_en = f"Maximum Temperature: {str(maxi)}°C,  Minimum Temperature: {str(mini)}°C"
+            part2_fr = f"Température maximal: {str(maxi)}°C, Température minimal: {str(mini)}°C"
+            part2_es = f"Temperatura máxima: {str(maxi)}°C, Temperatura mínimo: {str(mini)}°C"
 
 
         res_en = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Feels like {str(f_like)}°C "
-        res_info_en = f"\n{locals()[part1]}\n\nMax Temperatures: {str(maxi)}°C,  Min Temperatures: {str(mini)}°C\n\nHumidity: {humid}%,  Wind Speed: {str(w_speed)}m/sec"
+        res_info_en = f"\n{globals()[part1]}\n\nMaximum Temperature: {str(maxi)}°C,  Minimum Temperature: {str(mini)}°C\n\nHumidity: {humid}%,  Wind Speed: {str(w_speed)}m/sec"
         
         res_fr = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Ressenti: {str(f_like)}°C "
-        res_info_fr = f"\nLever du soleil: {sunrise} et Coucher du soleil: {sunset}\n\nTempératures maximal: {str(maxi)}°C, Températures minimal: {str(mini)}°C\n\nHumidité: {humid}%,  Vitesse du vent: {str(w_speed)}m/sec"
+        res_info_fr = f"\nLever du soleil: {sunrise} et Coucher du soleil: {sunset}\n\nTempérature maximal: {str(maxi)}°C, Température minimal: {str(mini)}°C\n\nHumidité: {humid}%,  Vitesse du vent: {str(w_speed)}m/sec"
 
         res_es = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Sensación térmica: {str(f_like)}°C "
         res_info_es = f"\nAmanecer: {sunrise} y Atardecer: {sunset}\n\nTemperatura máxima : {str(maxi)}°C, Temperatura mínimo: {str(mini)}°C\n\nHumedad: {humid}%,  Velocidad del viento: {str(w_speed)}m/sec"
@@ -86,16 +125,9 @@ def weather(window):
         label2.config(text=locals()[lang_info])
         txt.set("")
         
-        part1 = "part1_"+clicked.get()
+        
 
-        if var1.get() == "1" and var2.get() == "1":
-            part1_en = f""
-        if var1.get() == "1":
-            part1_en = f"Sunset: {sunrise}"
-        if var2.get() == "1":
-            part1_en = f"Sunrise: {sunset}"
-        if var1.get() == "0" and var2.get() == "0":
-            part1_en = f"Sunrise: {sunrise} and Sunset: {sunset}"
+        
         
         
 
@@ -121,6 +153,8 @@ def update_label(*args):
         labelimg.place(x= 105, y=110)  
         label1.place(x = 225, y=135)
         label2.place(x = 75, y = 250)
+
+
 
 def menu(): #probablement la pire fonction que j'ai jamais écrit
     global val_button, ch1, ch2, ch3, ch4, ch5, ch6
@@ -150,8 +184,8 @@ def menu(): #probablement la pire fonction que j'ai jamais écrit
         if clicked.get() == "en":
             ch1['text'] = "Do not include sunrise"
             ch2['text'] = "Do not include sunset"
-            ch3['text'] = "Do not include max temperatures"
-            ch4['text'] = "Do not include min temperatures"
+            ch3['text'] = "Do not include maximum temperatures"
+            ch4['text'] = "Do not include minimum temperatures"
             ch5['text'] = "Do not include humidity"
             ch6['text'] = "Do not include wind speed"
         elif clicked.get() == "fr":
