@@ -5,11 +5,14 @@ import requests
 import time
 from PIL import ImageTk, Image
 
+
+
+"""doesnt work, too bad!
 import os
 script_dir = os.path.dirname(os.path.abspath(__file__))
 # Generate the path to the icon file
-icon_path = os.path.join(script_dir, 'weather-icon.ico')
-
+icon_path = os.path.join(script_dir, 'weather.ico')
+"""
 
 
 
@@ -307,7 +310,6 @@ def menu():
 
 window = ttk.Window(themename='darkly') 
 window.title("Weather App (Rayan I.)")
-window.iconbitmap(icon_path) #yes this is dumb
 window.geometry("750x550") 
 title = ("Helvetica", 20, "bold")
 Font = ("Helvetica", 17, "bold")
