@@ -17,7 +17,7 @@ from PIL import ImageTk, Image
 def weather(window):
     global  part3, part3_en, part3_fr, part3_es, x_var_en, x_var_fr, x_var_es, part1, part1_en, part1_fr, part1_es, part2, part2_en, part2_fr, part2_es
     city = txt.get()
-    #lang_str = clicked.get()
+    
 
     """ 
     x_var_en = 40
@@ -173,6 +173,7 @@ def update_label(*args):
         labelimg.place(x= 120, y=110)  
         label1.place(x = 250, y=135)  
         label2.place(x = 40, y = 265)
+        textfield.focus()
         
 
     if clicked.get() == "fr":
@@ -182,13 +183,15 @@ def update_label(*args):
         labelimg.place(x= 135, y=100)
         label1.place(x = 260, y=120)  
         label2.place(x = 60, y = 265)
+        textfield.focus()
 
     if clicked.get() == "es":
         label3['text'] = "Lengua: "
         button["text"] = "Filtrar"
-        labelimg.place(x= 105, y=110)  
-        label1.place(x = 225, y=135)
+        labelimg.place(x= 95, y=110)  
+        label1.place(x = 215, y=135)
         label2.place(x = 75, y = 265)
+        textfield.focus()
 
 
 
@@ -260,6 +263,7 @@ def menu(): #probablement la pire fonction que j'ai jamais écrit
         ch4.place_forget()
         ch5.place_forget()
         ch6.place_forget()
+        textfield.focus()
         
         
         
