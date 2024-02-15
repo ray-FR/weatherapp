@@ -18,9 +18,11 @@ def weather(window):
     global  x_var_en, x_var_fr, x_var_es, part1, part1_en, part1_fr, part1_es, part2, part2_en, part2_fr, part2_es, part3, part3_en, part3_fr, part3_es
     city = txt.get()
     #lang_str = clicked.get()
-""" x_var_en = 40
+    """ 
+    x_var_en = 40
     x_var_fr = 60
-    x_var_es = 75"""
+    x_var_es = 75
+    """
     
     
     api = f"https://api.openweathermap.org/data/2.5/weather?q={city}&lang={clicked.get()}&appid={api_k}"
@@ -135,13 +137,13 @@ def weather(window):
 
         
         res_en = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Feels like {str(f_like)}°C "
-        res_info_en = f"\n{globals()[part1]}\n\n{globals()[part2]}\n\nHumidity: {humid}%,  Wind Speed: {str(w_speed)}m/sec"
+        res_info_en = f"\n{globals()[part1]}\n\n{globals()[part2]}\n\n{globals()[part3]}m/sec"
         
         res_fr = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Ressenti: {str(f_like)}°C "
-        res_info_fr = f"\n{globals()[part1]}\n\n{globals()[part2]}\n\nHumidité: {humid}%,  Vitesse du vent: {str(w_speed)}m/sec"
+        res_info_fr = f"\n{globals()[part1]}\n\n{globals()[part2]}\n\n{globals()[part3]}m/sec"
 
         res_es = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Sensación térmica: {str(f_like)}°C "
-        res_info_es = f"\n{globals()[part1]}\n\n{globals()[part2]}\n\nHumedad: {humid}%,  Velocidad del viento: {str(w_speed)}m/sec"
+        res_info_es = f"\n{globals()[part1]}\n\n{globals()[part2]}\n\n{globals()[part3]}m/sec"
 
 
 
@@ -149,6 +151,7 @@ def weather(window):
         lang_info = "res_info_"+clicked.get()
         label1.config(text=locals()[lang])
         label2.config(text=locals()[lang_info])
+    
         txt.set("")
         
         
