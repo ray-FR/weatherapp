@@ -70,7 +70,7 @@ def weather(window):
 
 
         res_en = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Feels like {str(f_like)}°C "
-        res_info_en = f"\nSunrise: {sunrise} and Sunset: {sunset}\n\nMax Temperatures: {str(maxi)}°C,  Min Temperatures: {str(mini)}°C\n\nHumidity: {humid}%,  Wind Speed: {str(w_speed)}m/sec"
+        res_info_en = f"\n{locals()[part1]}\n\nMax Temperatures: {str(maxi)}°C,  Min Temperatures: {str(mini)}°C\n\nHumidity: {humid}%,  Wind Speed: {str(w_speed)}m/sec"
         
         res_fr = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Ressenti: {str(f_like)}°C "
         res_info_fr = f"\nLever du soleil: {sunrise} et Coucher du soleil: {sunset}\n\nTempératures maximal: {str(maxi)}°C, Températures minimal: {str(mini)}°C\n\nHumidité: {humid}%,  Vitesse du vent: {str(w_speed)}m/sec"
@@ -86,6 +86,19 @@ def weather(window):
         label2.config(text=locals()[lang_info])
         txt.set("")
         
+        part1 = "part1_"+clicked.get()
+
+        if var1.get() == "1" and var2.get() == "1":
+            part1_en = f""
+        if var1.get() == "1":
+            part1_en = f"Sunset: {sunrise}"
+        if var2.get() == "1":
+            part1_en = f"Sunrise: {sunset}"
+        if var1.get() == "0" and var2.get() == "0":
+            part1_en = f"Sunrise: {sunrise} and Sunset: {sunset}"
+        
+        
+
 
 
 def update_label(*args):
@@ -156,17 +169,21 @@ def menu(): #probablement la pire fonction que j'ai jamais écrit
             ch5['text'] = "No incluir la humedad"
             ch6['text'] = "No incluir la velocidad del viento"
 
-        ch1.place(x=100, y=175)
-        ch2.place(x=100, y=200)
-        ch3.place(x=100, y=225)
-        ch4.place(x=450, y=175)
-        ch5.place(x=450, y=200)
-        ch6.place(x=450, y=225)
+
+
+        ch1.place(x=25, y=170)
+        ch2.place(x=25, y=205)
+        ch3.place(x=25, y=240)
+        ch4.place(x=450, y=170)
+        ch5.place(x=450, y=205)
+        ch6.place(x=450, y=240)
+        drop['state'] = 'disabled'
         val_button = 1
 
     elif val_button == 1:
         txt.set("")
-        textfield.config(state='enabled')
+        textfield['state'] = 'enabled'
+        drop['state'] = 'enabled'
         ch1.place_forget()
         ch2.place_forget()
         ch3.place_forget()
@@ -245,7 +262,7 @@ label1.place(x = 250, y=135)
 label2.place(x = 125, y = 265)
 label3.place(x=530, y=505)
 drop.place(x=650, y= 500)
-button.place(x=150, y=500)
+button.place(x=50, y=500)
 
 
 
