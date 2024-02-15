@@ -16,7 +16,8 @@ from PIL import ImageTk, Image
 
 def weather(window):
     global  part3, part3_en, part3_fr, part3_es, x_var_en, x_var_fr, x_var_es, part1, part1_en, part1_fr, part1_es, part2, part2_en, part2_fr, part2_es
-    #yes, this is dumb, but it works, so i dont care
+    #yes, this is dumb, but it works
+    
     city = txt.get()
     
 
@@ -91,9 +92,9 @@ def weather(window):
             part1_fr = f"Lever du soleil: {sunrise}"
             part1_es = f"Amanecer: {sunrise}"
         elif var1.get() == "0" and var2.get() == "0":
-            part1_en = f"Sunrise: {sunrise} and Sunset: {sunset}"
-            part1_fr = f"Lever du soleil: {sunrise} et Coucher du soleil: {sunset}"
-            part1_es = f"Amanecer: {sunrise} y Atardecer: {sunset}"
+            part1_en = f"Sunrise: {sunrise}, Sunset: {sunset}"
+            part1_fr = f"Lever du soleil: {sunrise}, Coucher du soleil: {sunset}"
+            part1_es = f"Amanecer: {sunrise}, Atardecer: {sunset}"
 
 
         if var3.get() == "1" and var4.get() == "1":
@@ -192,7 +193,7 @@ def update_label(*args):
         label3['text'] = "Langue: "
         button['text'] = "Filtrer"
         labelimg.place(x= 135, y=100)
-        label1.place(x = 260, y=120)  
+        label1.place(x = 260, y=135)  
         label2.place(x = 60, y = 265)
         textfield.focus()
 
@@ -238,6 +239,7 @@ def menu():
             ch4['text'] = "Do not include minimum temperatures"
             ch5['text'] = "Do not include humidity"
             ch6['text'] = "Do not include wind speed"
+            button['text'] = "Close filter"
         elif clicked.get() == "fr":
             ch1['text'] = "Ne pas inclure le lever du soleil"
             ch2['text'] = "Ne pas inclure le coucher du soleil"
@@ -245,6 +247,7 @@ def menu():
             ch4['text'] = "Ne pas inclure la température minimal"
             ch5['text'] = "Ne pas inclure l'humidité"
             ch6['text'] = "Ne pas inclure la vitesse du vent"
+            button['text'] = "Fermer le menu de filtre"
         elif clicked.get() == "es":
             ch1['text'] = "No incluir el amanecer"
             ch2['text'] = "No incluir la puesta del sol"
@@ -252,6 +255,7 @@ def menu():
             ch4['text'] = "No incluir la temperatura mínima"
             ch5['text'] = "No incluir la humedad"
             ch6['text'] = "No incluir la velocidad del viento"
+            button['text'] = "Cerrar filtro"
 
 
 
@@ -268,6 +272,12 @@ def menu():
         txt.set("")
         textfield['state'] = 'enabled'
         drop['state'] = 'enabled'
+        if clicked.get() == "en":
+            button['text'] = "Filter"
+        elif clicked.get() == "fr":
+            button['text'] = "Filtrer"
+        elif clicked.get() == "es":
+            button['text'] = "Filtrar"
         ch1.place_forget()
         ch2.place_forget()
         ch3.place_forget()
@@ -295,7 +305,7 @@ def menu():
 window = ttk.Window(themename='darkly') 
 window.title("Weather App")
 window.geometry("750x550") 
-title = ("Helvetica", 23, "bold")
+title = ("Helvetica", 20, "bold")
 Font = ("Helvetica", 17, "bold")
 Font2 = ("Helvetica", 17)
 window.resizable(False, False) #i have no idea how to change the placements of the widgets automatically, so i just disabled it
@@ -320,8 +330,8 @@ var6 = ttk.StringVar(value="0")
 
 api_k = input("Api key? ")
 txt = tk.StringVar()
-textfield = ttk.Entry(window, font=title, textvariable=txt)
-textfield.place(x=210, y=25 )  
+textfield = ttk.Entry(window, font=title, textvariable=txt, width=30, justify='center')
+textfield.place(x=145, y=25 )  
 
 
 
