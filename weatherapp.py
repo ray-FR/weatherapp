@@ -109,13 +109,13 @@ def weather(window):
 
 
         res_en = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Feels like {str(f_like)}°C "
-        res_info_en = f"\n{globals()[part1]}\n\nMaximum Temperature: {str(maxi)}°C,  Minimum Temperature: {str(mini)}°C\n\nHumidity: {humid}%,  Wind Speed: {str(w_speed)}m/sec"
+        res_info_en = f"\n{globals()[part1_en]}\n\n{globals()[part2_en]}\n\nHumidity: {humid}%,  Wind Speed: {str(w_speed)}m/sec"
         
         res_fr = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Ressenti: {str(f_like)}°C "
-        res_info_fr = f"\nLever du soleil: {sunrise} et Coucher du soleil: {sunset}\n\nTempérature maximal: {str(maxi)}°C, Température minimal: {str(mini)}°C\n\nHumidité: {humid}%,  Vitesse du vent: {str(w_speed)}m/sec"
+        res_info_fr = f"\n{globals()[part1_fr]}\n\n{globals()[part2_fr]}\n\nHumidité: {humid}%,  Vitesse du vent: {str(w_speed)}m/sec"
 
         res_es = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Sensación térmica: {str(f_like)}°C "
-        res_info_es = f"\nAmanecer: {sunrise} y Atardecer: {sunset}\n\nTemperatura máxima : {str(maxi)}°C, Temperatura mínimo: {str(mini)}°C\n\nHumedad: {humid}%,  Velocidad del viento: {str(w_speed)}m/sec"
+        res_info_es = f"\n{globals()[part1_es]}\n\n{globals()[part2_es]}\n\nHumedad: {humid}%,  Velocidad del viento: {str(w_speed)}m/sec"
 
 
 
@@ -138,7 +138,7 @@ def update_label(*args):
         label3['text'] = "Language: "
         labelimg.place(x= 120, y=110)  
         label1.place(x = 250, y=135)  
-        label2.place(x = 125, y = 265)
+        label2.place(x = 40, y = 265)
         
 
     if clicked.get() == "fr":
@@ -293,7 +293,7 @@ button = ttk.Button(window, text="Show menu", command=menu)
 
 labelimg.place(x= 120, y=110)  
 label1.place(x = 250, y=135)  
-label2.place(x = 125, y = 265)
+label2.place(x = 40, y = 265)
 label3.place(x=530, y=505)
 drop.place(x=650, y= 500)
 button.place(x=50, y=500)
