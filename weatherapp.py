@@ -15,9 +15,10 @@ from PIL import ImageTk, Image
 
 
 def weather(window):
-    global  x_var_en, x_var_fr, x_var_es, part1, part1_en, part1_fr, part1_es, part2, part2_en, part2_fr, part2_es, part3, part3_en, part3_fr, part3_es
+    global  part3, part3_en, part3_fr, part3_es, x_var_en, x_var_fr, x_var_es, part1, part1_en, part1_fr, part1_es, part2, part2_en, part2_fr, part2_es
     city = txt.get()
     #lang_str = clicked.get()
+
     """ 
     x_var_en = 40
     x_var_fr = 60
@@ -113,7 +114,7 @@ def weather(window):
         elif var3.get() == "1" or var4.get() == "1":
             x_var_en = 170
             x_var_fr = 70
-            x_var_es = 105
+            x_var_es = 145
             label2.place(x = globals()[x_var], y = 265)
         elif var3.get() == "0" and var4.get() == "0":
             part2_en = f"Maximum Temperature: {str(maxi)}°C,  Minimum Temperature: {str(mini)}°C"
@@ -121,7 +122,7 @@ def weather(window):
             part2_es = f"Temperatura máxima: {str(maxi)}°C, Temperatura mínimo: {str(mini)}°C"
         
         
-        elif var5.get() == "1" and var6.get() == "1":
+        if var5.get() == "1" and var6.get() == "1":
             part3_en = f""
             part3_fr = f""
             part3_es = f""
@@ -134,16 +135,20 @@ def weather(window):
             part3_en = f"Humidity: {humid}%"
             part3_fr = f"Humidité: {humid}%"
             part3_es = f"Humedad: {humid}%"
+        elif var5.get() == "0" and var6.get() == "0":
+            part3_en = f"Humidity: {humid}%, Wind Speed: {str(w_speed)}m/sec"
+            part3_fr = f"Humidité: {humid}%, Vitesse du vent: {str(w_speed)}m/sec"
+            part3_es = f"Humedad: {humid}%, Velocidad del viento: {str(w_speed)}m/sec"
 
         
         res_en = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Feels like {str(f_like)}°C "
-        res_info_en = f"\n{globals()[part1]}\n\n{globals()[part2]}\n\n{globals()[part3]}m/sec"
+        res_info_en = f"\n{globals()[part1]}\n\n{globals()[part2]}\n\n{globals()[part3]}"
         
         res_fr = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Ressenti: {str(f_like)}°C "
-        res_info_fr = f"\n{globals()[part1]}\n\n{globals()[part2]}\n\n{globals()[part3]}m/sec"
+        res_info_fr = f"\n{globals()[part1]}\n\n{globals()[part2]}\n\n{globals()[part3]}"
 
         res_es = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Sensación térmica: {str(f_like)}°C "
-        res_info_es = f"\n{globals()[part1]}\n\n{globals()[part2]}\n\n{globals()[part3]}m/sec"
+        res_info_es = f"\n{globals()[part1]}\n\n{globals()[part2]}\n\n{globals()[part3]}"
 
 
 
@@ -151,7 +156,6 @@ def weather(window):
         lang_info = "res_info_"+clicked.get()
         label1.config(text=locals()[lang])
         label2.config(text=locals()[lang_info])
-    
         txt.set("")
         
         
@@ -165,20 +169,23 @@ def weather(window):
 def update_label(*args):
     if clicked.get() == "en":
         label3['text'] = "Language: "
+        button['text'] = "Show menu"
         labelimg.place(x= 120, y=110)  
         label1.place(x = 250, y=135)  
         label2.place(x = 40, y = 265)
         
 
     if clicked.get() == "fr":
-        #label3.config(text="Langue: ")
+        
         label3['text'] = "Langue: "
+        button['text'] = "Afficher le menu"
         labelimg.place(x= 135, y=100)
         label1.place(x = 260, y=120)  
         label2.place(x = 60, y = 265)
 
     if clicked.get() == "es":
         label3['text'] = "Lengua: "
+        button["text"] = "Mostrar menú"
         labelimg.place(x= 105, y=110)  
         label1.place(x = 225, y=135)
         label2.place(x = 75, y = 265)
