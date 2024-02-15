@@ -169,7 +169,7 @@ def weather(window):
 def update_label(*args):
     if clicked.get() == "en":
         label3['text'] = "Language: "
-        button['text'] = "Show menu"
+        button['text'] = "Filter"
         labelimg.place(x= 120, y=110)  
         label1.place(x = 250, y=135)  
         label2.place(x = 40, y = 265)
@@ -178,14 +178,14 @@ def update_label(*args):
     if clicked.get() == "fr":
         
         label3['text'] = "Langue: "
-        button['text'] = "Afficher le menu"
+        button['text'] = "Filtrer"
         labelimg.place(x= 135, y=100)
         label1.place(x = 260, y=120)  
         label2.place(x = 60, y = 265)
 
     if clicked.get() == "es":
         label3['text'] = "Lengua: "
-        button["text"] = "Mostrar menú"
+        button["text"] = "Filtrar"
         labelimg.place(x= 105, y=110)  
         label1.place(x = 225, y=135)
         label2.place(x = 75, y = 265)
@@ -306,7 +306,7 @@ var6 = ttk.StringVar(value="0")
 api_k = input("Api key? ")
 txt = tk.StringVar()
 textfield = ttk.Entry(window, font=title, textvariable=txt)
-textfield.place(x=220, y=25 )  
+textfield.place(x=210, y=25 )  
 
 
 
@@ -322,7 +322,7 @@ label1 = ttk.Label(window, font=title, justify='center')
 label2 = ttk.Label(window, font=Font, justify='center')
 label3 = ttk.Label(window, font=Font2, text='Language: ')
 drop = ttk.OptionMenu(window, clicked, "en","en","fr","es")
-button = ttk.Button(window, text="Show menu", command=menu)
+button = ttk.Button(window, text="Filter", command=menu)
 
 
 
@@ -332,7 +332,7 @@ label1.place(x = 250, y=135)
 label2.place(x = 40, y = 265)
 label3.place(x=530, y=505)
 drop.place(x=650, y= 500)
-button.place(x=50, y=500)
+button.place(x=25, y=500)
 
 
 
