@@ -303,7 +303,8 @@ def menu():
 
 
 window = ttk.Window(themename='darkly') 
-window.title("Weather App")
+window.title("Weather App (Rayan I.)")
+window.ico
 window.geometry("750x550") 
 title = ("Helvetica", 20, "bold")
 Font = ("Helvetica", 17, "bold")
