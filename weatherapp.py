@@ -294,12 +294,7 @@ def menu():
         
         
         
-        """doesnt work, it just refuses to use the method that is associated with the checkbutton objects for some reason?? forgive me
-        for the horrid code above
-        for i in range(1, 2):
-            a = "ch"+str(i)
-            globals()[a].place_forget()
-        """
+        
         val_button = 0
         
             
