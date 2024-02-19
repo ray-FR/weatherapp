@@ -7,7 +7,7 @@ from PIL import ImageTk, Image
 
 
 
-
+#MAKE SURE DISPLAY SCALE IS 100% OR ELSE THE WIDGETS WILL BE MISPLACED
 
 
 
