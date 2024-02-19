@@ -7,12 +7,7 @@ from PIL import ImageTk, Image
 
 
 
-"""doesnt work, too bad!
-import os
-script_dir = os.path.dirname(os.path.abspath(__file__))
-# Generate the path to the icon file
-icon_path = os.path.join(script_dir, 'weather.ico')
-"""
+
 
 
 
@@ -373,3 +368,14 @@ textfield.bind('<Return>', weather)
 
 clicked.trace_add("write", update_label)
 window.mainloop()
+
+
+
+
+"""extra stuff that doesnt work
+doesnt work, too bad!
+import os
+script_dir = os.path.dirname(os.path.abspath(__file__))
+# Generate the path to the icon file
+icon_path = os.path.join(script_dir, 'weather.ico')
+"""
