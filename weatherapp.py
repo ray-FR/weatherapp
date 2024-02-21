@@ -298,8 +298,11 @@ def menu():
 
 
 
-window = ttk.Window(themename='darkly') 
+window = ttk.Window(themename='darkly')
+img = ttk.PhotoImage(file='partly-cloudy-day-256.png')
+window.tk.call('wm', 'iconphoto', window._w, img) #would not work otherwise
 window.title("Weather App (Rayan I.)")
+
 window.geometry("750x550") 
 title = ("Helvetica", 20, "bold")
 Font = ("Helvetica", 17, "bold")
