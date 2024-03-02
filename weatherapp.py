@@ -309,7 +309,7 @@ def mode_t():
 
 
 theme = 'darkly'
-window = ttk.Window(themename=theme)
+window = ttk.Window()
 img = ttk.PhotoImage(file='weather.png')
 window.tk.call('wm', 'iconphoto', window._w, img) #would not work otherwise
 window.title("Weather App (Rayan I.)")
