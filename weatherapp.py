@@ -295,7 +295,7 @@ def menu():
 def mode_t():
     global val_t
     if val_t == 1:
-        style.theme_use('flatly')
+        style.theme_use('morph')
         button_t.config(image=Light_mode)
         val_t = 0
     else:
