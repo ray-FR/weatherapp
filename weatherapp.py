@@ -1,5 +1,3 @@
-"test"
-
 import tkinter as tk
 # from tkinter import ttk
 import ttkbootstrap as ttk
@@ -299,8 +297,8 @@ def menu():
 
 
 
-
-window = ttk.Window(themename='darkly')
+theme = 'darkly'
+window = ttk.Window(themename=theme)
 img = ttk.PhotoImage(file='weather.png')
 window.tk.call('wm', 'iconphoto', window._w, img) #would not work otherwise
 window.title("Weather App (Rayan I.)")
@@ -311,7 +309,9 @@ Font = ("Helvetica", 17, "bold")
 Font2 = ("Helvetica", 17)
 window.resizable(False, False) #i have no idea how to change the placements of the widgets automatically, so i just disabled it
 val_button = 0
-style = ttk.Style(theme='darkly')
+style = ttk.Style(theme=theme)
+Light_mode = ttk.PhotoImage(file='Light_M.png')
+Dark_mode = ttk.PhotoImage(file='Dark_M.png')
 
 #wouldn't work if these were in the menu  function
 var1 = ttk.StringVar(value="0")
@@ -349,6 +349,8 @@ label2 = ttk.Label(window, font=Font, justify='center')
 label3 = ttk.Label(window, font=Font2, text='Language: ')
 drop = ttk.OptionMenu(window, clicked, "en","en","fr","es") #yes en was put twice or else it wouldnt work. too bad!
 button = ttk.Button(window, text="Filter", command=menu)
+button_t = ttk.Button(window, image=, command=menu)
+
 
 labelimg.place(x= 120, y=110)  
 label1.place(x = 250, y=135)  
