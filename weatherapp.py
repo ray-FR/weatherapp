@@ -291,6 +291,17 @@ def menu():
         
         
         val_button = 0
+
+def mode_t():
+    global val_t
+    if val_t == 1:
+        style.theme_use('flatly')
+        button_t.config(image=Light_mode)
+        val_t = 0
+    else:
+        style.theme_use('darkly')
+        button_t.config(image=Dark_mode)
+        val_t = 1
         
             
         
@@ -309,9 +320,10 @@ Font = ("Helvetica", 17, "bold")
 Font2 = ("Helvetica", 17)
 window.resizable(False, False) #i have no idea how to change the placements of the widgets automatically, so i just disabled it
 val_button = 0
-style = ttk.Style(theme=theme)
+style = ttk.Style(theme='darkly')
 Light_mode = ttk.PhotoImage(file='Light_M.png')
 Dark_mode = ttk.PhotoImage(file='Dark_M.png')
+val_t = 1
 
 #wouldn't work if these were in the menu  function
 var1 = ttk.StringVar(value="0")
@@ -349,7 +361,7 @@ label2 = ttk.Label(window, font=Font, justify='center')
 label3 = ttk.Label(window, font=Font2, text='Language: ')
 drop = ttk.OptionMenu(window, clicked, "en","en","fr","es") #yes en was put twice or else it wouldnt work. too bad!
 button = ttk.Button(window, text="Filter", command=menu)
-button_t = ttk.Button(window, image=Dark_mode, command=menu)
+button_t = ttk.Button(window, image=Dark_mode, command=mode_t)
 
 
 labelimg.place(x= 120, y=110)  
