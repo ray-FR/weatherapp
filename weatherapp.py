@@ -349,7 +349,7 @@ label2 = ttk.Label(window, font=Font, justify='center')
 label3 = ttk.Label(window, font=Font2, text='Language: ')
 drop = ttk.OptionMenu(window, clicked, "en","en","fr","es") #yes en was put twice or else it wouldnt work. too bad!
 button = ttk.Button(window, text="Filter", command=menu)
-button_t = ttk.Button(window, image=, command=menu)
+button_t = ttk.Button(window, image=Dark_mode, command=menu)
 
 
 labelimg.place(x= 120, y=110)  
@@ -358,6 +358,7 @@ label2.place(x = 40, y = 265)
 label3.place(x=530, y=505)
 drop.place(x=650, y= 500)
 button.place(x=25, y=500)
+button_t.place(x=45, y=27)
 
 
 textfield.bind('<Return>', weather)
