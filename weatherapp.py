@@ -41,6 +41,8 @@ def weather(window):
         elif clicked.get() == "es":
             label1.config(text=f"Error. {city} no existe.")
         label2.config(text="")
+        txt.set("")
+        textfield.focus()
 
     elif str(json_data['cod']) == '401':
         if clicked.get() == "en":
@@ -298,10 +300,12 @@ def mode_t():
         style.theme_use('morph')
         button_t.config(image=Light_mode)
         val_t = 0
+        textfield.focus()
     else:
         style.theme_use('darkly')
         button_t.config(image=Dark_mode)
         val_t = 1
+        textfield.focus()
         
             
         
