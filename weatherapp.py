@@ -16,21 +16,21 @@ from PIL import ImageTk, Image
 
 
 def weather(window):
-    global  part3, part3_en, part3_fr, part3_es, x_var_en, x_var_fr, x_var_es, part1, part1_en, part1_fr, part1_es, part2, part2_en, part2_fr, part2_es
-    #yes, this is dumb, but it works
+    global  part3, part3_en, part3_fr, part3_es, part1, part1_en, part1_fr, part1_es, part2, part2_en, part2_fr, part2_es
+    #would not work
     
     city = txt.get()
-    
+    #getting the city name from the textfield
 
    
     
     
     api = f"https://api.openweathermap.org/data/2.5/weather?q={city}&lang={clicked.get()}&appid={api_k}"
     print(api)
-    
+    #putting the link in a variable with the city name, language and the api key
     
     json_data = requests.get(api).json()
-    
+    #getting the data from the api in json format
 
     if str(json_data['cod']) == '404': #the error message will not be centered
         labelimg.config(image='')
@@ -69,13 +69,14 @@ def weather(window):
         sunset = time.strftime("%H:%M:%S", time.gmtime(json_data['sys']['sunset'] - 3600)) #on ajoute 3600 secondes(1 heure) car on est en GMT+1
         
         icon_url = f'http://openweathermap.org/img/wn/{icons}@2x.png'
+        #getting the icon url and putting it in a variable
         
-        img = Image.open(requests.get(icon_url, stream=True).raw)
+        img = Image.open(requests.get(icon_url, stream=True).raw) #getting the icon from the url
         icon = ImageTk.PhotoImage(img)
         labelimg.config(image=icon)
         labelimg.image = icon
 
-        x_var = "x_var_"+clicked.get()
+        
         part1 = "part1_"+clicked.get()
         part2 = "part2_"+clicked.get()
         part3 = "part3_"+clicked.get()
@@ -129,7 +130,7 @@ def weather(window):
             part2_en = f"Maximum Temperature: {str(maxi)}°C,  Minimum Temperature: {str(mini)}°C"
             part2_fr = f"Température maximal: {str(maxi)}°C, Température minimal: {str(mini)}°C"
             part2_es = f"Temperatura máxima: {str(maxi)}°C, Temperatura mínimo: {str(mini)}°C"
-            if clicked.get() == "en": #i know this is dumb, but it wouldnt work otherwise
+            if clicked.get() == "en": #place the text differently depending on the language
                 label2.place(x=40, y=265)
             elif clicked.get() == "fr":
                 label2.place(x=60, y=265)
@@ -155,7 +156,7 @@ def weather(window):
             part3_fr = f"Humidité: {humid}%, Vitesse du vent: {str(w_speed)}m/sec"
             part3_es = f"Humedad: {humid}%, Velocidad del viento: {str(w_speed)}m/sec"
 
-        #theres probably a better way to do this, but too bad
+        #different translations for the same text
         res_en = f"{city.capitalize()}: {condition.capitalize()}\n  {str(temp)}°C, Feels like {str(f_like)}°C "
         res_info_en = f"\n{globals()[part1]}\n\n{globals()[part2]}\n\n{globals()[part3]}"
         
@@ -169,9 +170,9 @@ def weather(window):
 
         lang = "res_"+clicked.get()
         lang_info = "res_info_"+clicked.get()
-        label1.config(text=locals()[lang])
+        label1.config(text=locals()[lang]) #ok so using locals() I find the variable with the name of the string and put it in the label
         label2.config(text=locals()[lang_info])
-        txt.set("")
+        txt.set("") #clear the textfield
         
         
 
@@ -181,7 +182,7 @@ def weather(window):
 
 
 
-def update_label(*args):
+def update_label(*args): #update the label depending on the language
     if clicked.get() == "en":
         label3['text'] = "Language: "
         button['text'] = "Filter"
@@ -210,7 +211,7 @@ def update_label(*args):
 
 
 
-def menu():
+def menu(): #the filter menu
     global val_button, ch1, ch2, ch3, ch4, ch5, ch6
     
 
@@ -294,10 +295,10 @@ def menu():
         
         val_button = 0
 
-def mode_t():
+def mode_t(): #change the theme
     global val_t
     if val_t == 1:
-        style.theme_use('morph')
+        style.theme_use('morph') #use predefined light theme
         button_t.config(image=Light_mode)
         val_t = 0
         textfield.focus()
@@ -322,14 +323,14 @@ window.geometry("750x550")
 title = ("Helvetica", 20, "bold")
 Font = ("Helvetica", 17, "bold")
 Font2 = ("Helvetica", 17)
-window.resizable(False, False) #i have no idea how to change the placements of the widgets automatically, so i just disabled it
+window.resizable(False, False) #disable resizing
 val_button = 0
 style = ttk.Style(theme='darkly')
 Light_mode = ttk.PhotoImage(file='Light_M.png')
 Dark_mode = ttk.PhotoImage(file='Dark_M.png')
 val_t = 1
 
-#wouldn't work if these were in the menu  function
+#wouldn't work if these were in the menu function
 var1 = ttk.StringVar(value="0")
 var2 = ttk.StringVar(value="0")
 var3 = ttk.StringVar(value="0")
@@ -342,8 +343,6 @@ var6 = ttk.StringVar(value="0")
 
 
 
-#style.configure('TCheckbutton' ,font=('Helvetica', 17) ) (doesnt work)
-
 
 api_k = input("Api key? ")
 txt = tk.StringVar()
@@ -352,7 +351,7 @@ textfield.place(x=145, y=25 )
 
 
 
-#textfield.focus()
+textfield.focus()
 
 clicked = ttk.StringVar()
 clicked.set("en")
@@ -363,11 +362,11 @@ labelimg = ttk.Label(window, )
 label1 = ttk.Label(window, font=title, justify='center')
 label2 = ttk.Label(window, font=Font, justify='center')
 label3 = ttk.Label(window, font=Font2, text='Language: ')
-drop = ttk.OptionMenu(window, clicked, "en","en","fr","es") #yes en was put twice or else it wouldnt work. too bad!
+drop = ttk.OptionMenu(window, clicked, "en","en","fr","es") #different languages dropdown menu
 button = ttk.Button(window, text="Filter", command=menu)
 button_t = ttk.Button(window, image=Dark_mode, command=mode_t)
 
-
+#place the widgets for english since it is english by default
 labelimg.place(x= 120, y=110)  
 label1.place(x = 250, y=135)  
 label2.place(x = 40, y = 265)
