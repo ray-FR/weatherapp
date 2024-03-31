@@ -17,7 +17,7 @@ from PIL import ImageTk, Image
 
 def weather(window):
     global  part3, part3_en, part3_fr, part3_es, part1, part1_en, part1_fr, part1_es, part2, part2_en, part2_fr, part2_es
-    #would not work
+    #would not work otherwise and I have no idea why
     
     city = txt.get()
     #getting the city name from the textfield
